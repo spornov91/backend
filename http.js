@@ -9,7 +9,7 @@ cert: fs.readFileSync(path.resolve(__dirname, 'ssl/server.crt'))
 const host = "127.0.0.1";
 const port = "2012";
 console.log("https://"+host+":"+port);
-const server = require('https').createServer(option, function (req, res) {
+const server = require('https').createServer(option, async function (req, res) {
 
 switch(req.method){
 case "GET":
@@ -20,18 +20,21 @@ res.writeHead(200, {'Content-Type': 'text/html'});
 res.write('/'); //write a response
 res.end(); //end the response
 break;
-case "/json":
+case "/mockjson":
 res.writeHead(200, {"Content-Type": "application/json"}); 
-var otherArray = ["item1", "item2"];  
-var otherObject = { item1: "item1val", item2: "item2val" }; 
-var json = JSON.stringify({ 
-anObject: otherObject, 
-anArray: otherArray, 
-another: "item" 
-});
+json = await getMockJson();
 res.write(json); //write a response
 res.end(); //end the response
 break;
+case "/realjson":
+res.writeHead(200, {"Content-Type": "application/json"}); 
+const response = await fetch("https://api.github.com/users/spornov91");
+const json = await response.json()
+
+res.write(JSON.stringify(json));
+res.end();
+break;
+getRealJson()
 };
 break;
 case "POST":
@@ -45,8 +48,21 @@ server.listen(port, host);
 //ctrl+z =  SIGTSTP
 process.on('SIGTERM', () => { 
 console.info('SIGTERM signal received.'); 
+
 server.close(() => { 
 console.log('Http server closed.'); 
 process.exit(0); 
 }); 
+
 });
+
+async function getMockJson(){
+var arr = ["txt1", "txt2"];  
+var obj = { item1: "txt1", item2: "txt2" }; 
+var json = JSON.stringify({ 
+anObject: obj, 
+anArray: arr, 
+another: "txt" 
+});
+return json;
+}
