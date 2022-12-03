@@ -7,7 +7,7 @@ cert: fs.readFileSync(path.resolve(__dirname, 'ssl/server.crt'))
 }
 
 const host = "127.0.0.1";
-const port = "2010";
+const port = "2012";
 console.log("https://"+host+":"+port);
 const server = require('https').createServer(option, function (req, res) {
 
@@ -41,3 +41,12 @@ break;
 
 });
 server.listen(port, host);
+
+//ctrl+z =  SIGTSTP
+process.on('SIGTERM', () => { 
+console.info('SIGTERM signal received.'); 
+server.close(() => { 
+console.log('Http server closed.'); 
+process.exit(0); 
+}); 
+});
