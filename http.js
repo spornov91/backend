@@ -6,7 +6,7 @@ key: fs.readFileSync(path.resolve(__dirname, 'ssl/server.key')),
 cert: fs.readFileSync(path.resolve(__dirname, 'ssl/server.crt')) 
 }
 
-const host = "127.0.0.1";
+const host = "localhost";
 const port = "2012";
 console.log("https://"+host+":"+port);
 const server = require('https').createServer(option, async function (req, res) {
@@ -22,8 +22,8 @@ res.end(); //end the response
 break;
 case "/mockjson":
 res.writeHead(200, {"Content-Type": "application/json"}); 
-json = await getMockJson();
-res.write(json); //write a response
+const mockjson = await getMockJson();
+res.write(mockjson); //write a response
 res.end(); //end the response
 break;
 case "/realjson":
@@ -63,6 +63,6 @@ var json = JSON.stringify({
 anObject: obj, 
 anArray: arr, 
 another: "txt" 
-});
+}, null, 3);
 return json;
 }

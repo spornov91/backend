@@ -1,0 +1,6 @@
+{ 
+"version": 2, 
+"name": "http-app", 
+"builds": [ { "src": "http.js", "use": "@vercel/node" } ], 
+"routes": [ { "src": "/(.*)", "dest": "/http.js" } ] 
+}
