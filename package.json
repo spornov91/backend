@@ -1,0 +1,10 @@
+{ 
+"name": "simple-http-server", 
+"version": "1.2.0", 
+"description": "http-nodejs", 
+"author": "spornov91", 
+"license": "MIT", 
+"private": false, 
+"scripts": { 
+"start": "node http.js" 
+}
