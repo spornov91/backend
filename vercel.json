@@ -1,5 +1,5 @@
 { 
 "version": 2, 
-"builds": [{ "src": "http.js", "use": "@now/node" }], 
+"builds": [{ "src": "http.js", "use": "@versel/node" }], 
 "routes": [{ "src": "(.*)", "dest": "http.js" }]
 }

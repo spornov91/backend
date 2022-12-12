@@ -5,6 +5,7 @@
 "author": "spornov91", 
 "license": "MIT", 
 "private": false, 
+"main": "http.js",
 "scripts": { 
 "start": "node http.js" 
 }
