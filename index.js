@@ -6,8 +6,8 @@ key: fs.readFileSync(path.resolve(__dirname, 'ssl/server.key')),
 cert: fs.readFileSync(path.resolve(__dirname, 'ssl/server.crt')) 
 }
 
-const host = "localhost";
-const port = "2012";
+const host = "now";
+const port = "3000";
 console.log("https://"+host+":"+port);
 const server = require('https').createServer(option, async function (req, res) {
 
@@ -43,7 +43,7 @@ break;
 };
 
 });
-server.listen(port, host);
+server.listen(port);
 
 //ctrl+z =  SIGTSTP
 process.on('SIGTERM', () => { 
