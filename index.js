@@ -1,15 +1,15 @@
 const path = require('path') 
 const fs = require('fs') 
-
+/*
 const option = { 
 key: fs.readFileSync(path.resolve(__dirname, 'ssl/server.key')), 
 cert: fs.readFileSync(path.resolve(__dirname, 'ssl/server.crt')) 
 }
-
+*/
 const host = "now";
 const port = "3000";
 console.log("https://"+host+":"+port);
-const server = require('https').createServer(option, async function (req, res) {
+const server = require('https').createServer(async function (req, res) {
 
 switch(req.method){
 case "GET":
