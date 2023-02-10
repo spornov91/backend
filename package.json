@@ -4,9 +4,5 @@
 "description": "http-nodejs", 
 "author": "spornov91", 
 "license": "MIT", 
-"main": "index.js",
-engines": { "node": "14.x" },
-"scripts": { 
-"start": "node index.js" 
-}
+"main": "index.js"
 }
