@@ -1,15 +1,4 @@
-const path = require('path') 
-const fs = require('fs') 
-
-const option = { 
-key: fs.readFileSync(path.resolve(__dirname, 'ssl/server.key')), 
-cert: fs.readFileSync(path.resolve(__dirname, 'ssl/server.crt')) 
-}
-
-const port = "3000";
-console.log("app in port:"+port);
-
-const server = require('https').createServer(option, async function (req, res) {
+const server = require('http').createServer(async function (req, res) {
 
 switch(req.method){
 case "GET":
@@ -43,9 +32,7 @@ case "POST":
 console.log(req.method);
 break;
 };
-
-});
-server.listen(port);
+}).listen(process.env.PORT || 3000);
 
 //ctrl+z =  SIGTSTP
 process.on('SIGTERM', () => { 
