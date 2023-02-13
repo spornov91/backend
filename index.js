@@ -22,7 +22,7 @@ res.writeHead(200, {"Content-Type": "application/json"});
 const response = await fetch("https://api.github.com/users/spornov91");
 const json = await response.json()
 
-res.write(JSON.stringify(json));
+res.write(JSON.stringify({json}, null, 3));
 res.end();
 break;
 };
