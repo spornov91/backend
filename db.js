@@ -47,7 +47,7 @@ const all = async (req, res) => {
 const mock1 = async (req, res) => {
 const key = 1;
   const p1 = querystring.stringify({
-      'uuid' : key
+      'uuid' : key,
       'name' : 'Дмитрий',
       'course': 'php'
   });
