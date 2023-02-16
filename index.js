@@ -1,3 +1,4 @@
+const db = require('./db');
 const server = require('http').createServer(async function (req, res) {
 
 switch(req.method){
@@ -5,9 +6,9 @@ case "GET":
 console.log(req.method);
 switch(req.url){
 case "/":
-res.writeHead(200, {'Content-Type': 'text/html'});
-res.write('/'); //write a response
-res.end(); //end the response
+res.writeHead(200, {'Content-Type': 'text/html'});
+res.write('/'); //write a response
+res.end(); //end the response
 break;
 
 case "/mockjson":
@@ -25,6 +26,19 @@ const json = await response.json()
 res.write(JSON.stringify({json}, null, 3));
 res.end();
 break;
+
+case "/nightmare":
+const nm = require('./nightmare');
+break;
+
+case "/db/mk1":
+db.mk1(req, res);
+break;
+
+case "/db/all":
+db.all(req, res);
+break;
+
 };
 break;
 

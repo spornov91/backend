@@ -4,5 +4,8 @@
 "description": "http-nodejs", 
 "author": "spornov91", 
 "license": "MIT", 
-"main": "index.js"
+"main": "index.js",
+"dependencies": {
+    "@cyclic.sh/dynamodb": "^0.0.33"
+  }
 }
