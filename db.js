@@ -36,7 +36,8 @@ const get1 = async (req, res) => {
  
 // Get a full listing
 const all = async (req, res) => {
-  const col = req.params.col;
+  console.log(req.url);
+  const col = "db";
   console.log(`list collection: ${col} with params: ${JSON.stringify(req.params)}`);
   const items = await db.collection(col).list();
   console.log(JSON.stringify(items, null, 2));
@@ -45,7 +46,9 @@ const all = async (req, res) => {
 };
 
 const mock1 = async (req, res) => {
-const key = 1;
+const key = "1";
+const col = "db";
+const querystring = require('node:querystring');
   const p1 = querystring.stringify({
       'uuid' : key,
       'name' : 'Дмитрий',
